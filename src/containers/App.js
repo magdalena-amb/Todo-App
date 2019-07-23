@@ -1,14 +1,16 @@
 import React from 'react';
 import uuid from 'uuid';
-import style from './App.css';
+import { hot } from 'react-hot-loader';
 import Title from '../components/Title';
 import TodoList from '../components/TodoList';
+import TodoItem from '../components/TodoItem';
+import style from '../css/App.css';
 
 class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            data: ["walk the dog", "buy milk"]
+            data: [{ id:1, text:"walk the dog"},{id:2, text:"buy milk"}, {id:3, text:"do the laundry"} ]
         };
     }
     addTodo(val){
@@ -20,18 +22,28 @@ class App extends React.Component {
         this.setState({data});
     }
     removeTodo(id) {
+        console.log('clicked to remove!')
         const remainder = this.state.data.filter(todo => todo.id !== id);
         this.setState({data: remainder});
     }
     render() {
-        const numTodos = this.state.data.length;
+        const numTodos = this.state.data.length > 0 ? this.state.data.length : "";
+        const title = (this.state.data.length === 0) ? "all done!!!" : "waiting...";
+        const todos = this.state.data.map(todo =>(
+            <TodoItem 
+                key={todo.id}
+                text={todo.text} 
+                onDelete ={this.removeTodo.bind(this, todo.id)}
+            />
+        ));
         return (
-            <div className={style.TodoApp}>
-                <Title title="Todos" number={numTodos} />
-                <TodoList todos={this.state.data} />
+            <div className={style.TodoApp} >
+                <Title  title={title} number={numTodos} />
+                <TodoList  todoItems={todos}
+                />
             </div>
         );
     }
 }
 
-export default App;
+export default hot(module)(App);

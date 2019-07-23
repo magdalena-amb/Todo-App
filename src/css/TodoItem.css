@@ -1,0 +1,21 @@
+
+.TodoItem {
+    margin: 0 auto;
+    padding: 0 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+    color:#000;
+    background: #eee;
+    min-width: 300px;
+}
+span {
+    font-weight: bold;
+    color: rgb(97, 3, 3);
+    font-size: 20px;
+    height: 30px;
+    line-height: 30px;
+}
