@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader';
 import Title from '../components/Title';
 import TodoList from '../components/TodoList';
 import TodoItem from '../components/TodoItem';
+import TodoForm from '../components/TodoForm';
 import style from '../css/App.css';
 
 class App extends React.Component {
@@ -18,11 +19,12 @@ class App extends React.Component {
             text: val,
             id: uuid.v4(),
         };
+        console.log(todo);
         const data = [...this.state.data, todo];
-        this.setState({data});
+        console.log(data);
+        // this.setState({data});
     }
     removeTodo(id) {
-        console.log('clicked to remove!')
         const remainder = this.state.data.filter(todo => todo.id !== id);
         this.setState({data: remainder});
     }
@@ -38,7 +40,10 @@ class App extends React.Component {
         ));
         return (
             <div className={style.TodoApp} >
+                <TodoForm newTodo={this.addTodo} />
+
                 <Title  title={title} number={numTodos} />
+                
                 <TodoList  todoItems={todos}
                 />
             </div>
