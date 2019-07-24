@@ -13,16 +13,15 @@ class App extends React.Component {
         this.state = {
             data: [{ id:1, text:"walk the dog"},{id:2, text:"buy milk"}, {id:3, text:"do the laundry"} ]
         };
+        this.addTodo = this.addTodo.bind(this);
     }
     addTodo(val){
         const todo = {
             text: val,
             id: uuid.v4(),
         };
-        console.log(todo);
         const data = [...this.state.data, todo];
-        console.log(data);
-        // this.setState({data});
+        this.setState({data});
     }
     removeTodo(id) {
         const remainder = this.state.data.filter(todo => todo.id !== id);

@@ -15,20 +15,25 @@ class TodoForm extends Component {
             inputValue: e.target.value
         });
     }
-    handleSubmit () {
+    handleSubmit (e) {
+        e.preventDefault();
         this.props.newTodo(this.state.inputValue);
+        this.setState=({
+            inputValue: ""
+        });
+        
     }  
     render() {
         return(
-            <div className={style.TodoForm}>
+            <form className={style.TodoForm} onSubmit={this.handleSubmit}>
                 <input
                  type="text"
                  placeholder="ex. feed cats"
                  value={this.state.inputValue }
                  onChange={this.handleChange}
                   />
-                <button onClick={this.handleSubmit} > Add new </button>
-            </div>    
+                <button> Add new </button>
+            </form>    
         )
     }
 }
