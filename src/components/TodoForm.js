@@ -21,11 +21,10 @@ class TodoForm extends Component {
         this.setState=({
             inputValue: ""
         });
-        
     }  
     render() {
         return(
-            <form className={style.TodoForm} onSubmit={this.handleSubmit}>
+            <form className={style.TodoForm} onSubmit={this.handleSubmit }>
                 <input
                  type="text"
                  placeholder="ex. feed cats"
@@ -37,7 +36,5 @@ class TodoForm extends Component {
         )
     }
 }
-
-
 
 export default TodoForm;
