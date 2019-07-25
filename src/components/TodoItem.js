@@ -3,7 +3,15 @@ import style from '../css/TodoItem.css'
 
 const TodoItem = (props) => (
         <li className={style.TodoItem}>
-            {props.text}
+            <span style={
+                {textDecoration: props.done ? 'line-through' : 'none',
+                color: '#000'
+                }
+            }  
+            onClick= {props.onToggle}>
+                {props.text}
+            </span>
+            
             <span onClick={props.onDelete}> x </span>
         </li>      
 );   
