@@ -18,7 +18,7 @@ class TodoForm extends Component {
     handleSubmit (e) {
         e.preventDefault();
         this.props.newTodo(this.state.inputValue);
-        this.setState=({
+        this.setState({
             inputValue: ""
         });
     }  
