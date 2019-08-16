@@ -12,8 +12,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             data: [{ id:1, text:"walk the dog", done: false },
-            {id:2, text:"buy milk", done: false },
-             {id:3, text:"do the laundry", done: false} 
+             {id:2, text:"buy milk", done: false },
+             {id:3, text:"do the laundry", done: false}
             ]
         };
         this.addTodo = this.addTodo.bind(this);
@@ -39,8 +39,9 @@ class App extends React.Component {
             
     }
     render() {
-        const numTodos = this.state.data.length > 0 ? this.state.data.length : "";
-        const title = (this.state.data.length === 0) ? "all done!!!" : "waiting...";
+        const undoneTodos = this.state.data.filter(todo => todo.done == false).length;
+        const numTodos = this.state.data.length > 0 ? `${undoneTodos} / ${this.state.data.length} ` : "";
+        const title = (this.state.data.length === 0) || undoneTodos === 0 ? "all done!!!" : "waiting...";
         const todos = this.state.data.map(todo =>(
             <TodoItem 
                 key={todo.id}
