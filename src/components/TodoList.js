@@ -1,8 +1,9 @@
 import React from 'react';
+import style from '../css/TodoList.css';
 
-const TodoList = props => {
-    const todos = props.todos.map(todo => (<li key={todo.id}>{todo}</li>))
-    return (
-    <ul>{todos}</ul>
-    )}
+const TodoList =(props)=> (
+    <ul className={style.TodoList}>
+        {props.todoItems}
+    </ul>
+    );
 export default TodoList;
